@@ -1,0 +1,57 @@
+
+unittest1 updateCoins() starting...
+assert1: passed
+assert2: passed
+assert3: passed
+assert4: passed
+...unittest1 finished
+
+unittest2 getCost() starting...
+curse: passed
+estate: passed
+duchy: passed
+province: passed
+copper: passed
+silver: passed
+gold: passed
+adventurer: passed
+council_room: passed
+feast: passed
+gardens: passed
+mine: passed
+remodel: passed
+smithy: passed
+village: passed
+baron: passed
+great_hall: passed
+minion: passed
+steward: passed
+tribute: passed
+ambassador: passed
+cutpurse: passed
+...unittest2 getCost() finsihed
+
+unittest3 numHandCards() starting...
+numHandCards() state is 5: Passed!
+...unittest3 numHandCards() finished
+
+unittest4 initializeGame() starting...
+initializeGame() state is 0: Passed!
+...unittest4 initializeGame() finished
+
+cardtest1 smithy starting...
+correct: 3
+...cardtest1 finished: Passed if message shown
+
+cardtest2 adventurer starting...
+...cardtest2 finished: Passed if message shown
+
+cardtest3 newVillage starting...
+...cardtest3 finished: Passed if message shown
+
+cardtest4 minion card starting...
+...cardtest4 finished: Passed if message shown
+File 'dominion.c'
+Lines executed:26.69% of 562
+Creating 'dominion.c.gcov'
+

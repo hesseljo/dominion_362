@@ -1,0 +1,138 @@
+/*
+	ProjectPartA.txt
+*/
+
+/*
+	Name:	Alex Rappa
+		Joshua Hesseltine
+
+	Class: CS 362
+	Date: 7/22/2016
+	Description:	Project Part A
+
+*/
+
+
+1. Explain testIsValid Function of UrlValidator test code. 
+
+	- testIsValid() takes two inputs:
+	
+		1) Object[] testObjects
+				- Object[] testUrlParts = {testUrlScheme, testUrlAuthority, testUrlPort, testPath, testUrlQuery};
+												- each url part is an array of ResultPairs listed at the end of the program
+		2) long options
+				- UrlValidator.ALLOW_ALL_SCHEMES
+		
+	- creates a new UrlValidator object 
+	- asserts that urlVal.isValid() returns true for the urls: 
+			- "http://www.google.com"
+			- "http://www.google.com/"
+
+	DO:
+	
+		- creates a string buffer that will store the test url
+		- creates a boolean expected = true
+
+		FOR: 
+			
+			- iterates over the length (5) of testPartsIndex[]; an array of the 5 parts of a valid url (scheme+authority+port+path+query)
+			- Appends url part to string buffer (adds a scheme, authority, port, path, query)
+			- Appends true/false for individual parts to boolean variable "expected"
+
+		END FOR:
+			
+			- buffer = complete url
+			- expected = boolean values combined for each part (scheme, authority, etc...); if any part is false then expected = false
+
+		- store contents of string buffer in String object "url"
+		
+		- check if url is valid: 
+				- boolean result = urlVal.isValid(url)
+				- if true prints out the url
+				
+		- Asserts for url: 
+				- boolean expected == boolean result
+				- checks to see if UrlValidator properly validates a test case url 
+				- (each part of the test url is hard coded as true/false so that only a combination of valid parts results in a valid url)
+			
+	
+	WHILE: incrementTestPartsIndex() returns true 
+				- (while there are more testUrlParts to use)
+				- while loop will continue to run until all permutations of url parts have been tested.
+
+	
+	The function will terminate once all possible combinations of url parts have been used.	
+	
+
+2. Give how many total number of urls it is testing
+
+	Url Parts hard coded in this test case:
+		testUrlScheme = 9
+		testUrlAuthority = 19
+		testUrlPort = 7
+		testPath = 10
+		testUrlPathOptions = 15
+		testUrlQuery = 3
+
+	Total url combinations tested:
+			
+		31,920 different urls!
+	
+	
+3. Also, explain how it is building all the urls. 
+
+	There are 5 parts to the URL, each part is validated individually from a call to it’s own unique method. i.e. isValidScheme(). All url components must be valid for the whole URL to
+	be considered valid. 
+
+	The test data is built from the following:
+
+   	ResultPair[] testUrlScheme = {}
+   	ResultPair[] testUrlAuthority = {}
+   	ResultPair[] testUrlPort = {}
+	ResultPair[] testPath = {}
+   	ResultPair[] testUrlPathOptions = {}
+   	ResultPair[] testUrlQuery = {}
+   	Object[] testUrlParts = {testUrlScheme, testUrlAuthority, testUrlPort, testPath, testUrlQuery};
+   	Object[] testUrlPartsOptions = {testUrlScheme, testUrlAuthority, testUrlPort, testUrlPathOptions, testUrlQuery};
+   	int[] testPartsIndex = {0, 0, 0, 0, 0};
+
+   	//---------------- Test data for individual url parts ----------------
+   	ResultPair[] testScheme = {}
+
+	The URL is created by selecting the URL parts from the test data above. Each part has a ResultPair array element[], which is valid or invalid. Once every URL part is built, the URL is tested. 
+	As also explained in #1, the string buffer stores the URL left to right (adds a scheme, authority, port, path, query) and prints it to the console. 
+	The building occurs by creating a new ResultPair[] part = (ResultPair[]) testObjects[testPartsIndexIndex];
+
+4. Give an example of valid url being tested and an invalid url being tested by testIsValid() method.  
+
+	Valid Url's:
+		http://www.google.com:80/test1?action=view
+		http://www.google.com:80/test1?action=edit&mode=up
+		http://www.google.com:80/test1
+		http://www.google.com:80/t123?action=view
+		http://www.google.com:80/t123?action=edit&mode=up
+		http://www.google.com:80/t123
+		http://www.google.com:80/$23?action=view
+		http://www.google.com:80/$23?action=edit&mode=up
+		http://www.google.com:80/$23
+	
+	Invalid Url's:
+		http://www.google.com:80/..?action=view
+		http://www.google.com:80/..?action=edit&mode=up
+		http://www.google.com:80/..
+		http://www.google.com:80/../
+		http/go.a:65a?action=edit&mode=up
+		http/go.a:65a/test1//file?action=edit&mode=up
+		://go.a1a:65a
+		
+5. Do you think that a real world test (URL Validator's testIsValid() test in this case) is very different than the unit tests and card tests that we wrote (in terms of concepts & complexity)? 
+
+	The complexity is in the understanding of the JUNIT framework here, i.e. set up and tear down and knowing to put @Test etc. The mechanics involved are very much the same as C based testing of Dominion. 
+	We set up a test method that invokes the objects/classes from the main src/ and we essentially create a unique ‘main’ method to execute the test instructions. Asserting is essentially the same and ensuring 
+		coverage of each method for a given object class/file is likely a similar issue between the frameworks. 
+
+
+
+
+
+
